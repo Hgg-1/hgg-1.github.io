@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保养与健康指南</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* 头部样式 */
+        header {
+            background: linear-gradient(to right, #333, #444);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 20px;
+            color: #ddd;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: #444;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 18px 25px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        /* 主要内容样式 */
+        main {
+            padding: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 80px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #FFA500;
+            border-bottom: 2px solid #FFA500;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.03);
+        }
+
+        /* 列表样式 */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '✓';
+            color: #FFA500;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: linear-gradient(to right, #333, #444);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* 返回顶部按钮样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #FFA500;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50%;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header>
+        <h1>保养与健康指南</h1>
+        <p>开启健康生活，从日常保养开始</p>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#maintenance">保养技巧</a></li>
+            <li><a href="#health">健康建议</a></li>
+            <li><a href="#resources">相关资源</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <!-- 保养技巧部分 -->
+        <section id="maintenance">
+            <h2>保养技巧</h2>
+            <img src="https://q4.itc.cn/images01/20240730/d5f6bbaee29e413baeb08b8add4663bd.jpeg" alt="保养技巧图片">
+            <p>在日常生活中，合理的保养能让我们的身体和生活环境保持良好状态。以下是一些实用的保养技巧：</p>
+            <ul>
+                <li><strong>身体保养</strong>：保持规律的作息，每天保证 7 - 8 小时的高质量睡眠，有助于身体各器官的修复和恢复。晚上 11 点前入睡，让肝脏等器官能在最佳时间进行排毒。</li>
+                <li><strong>皮肤保养</strong>：根据自己的肤质选择合适的护肤品，做好清洁、保湿和防晒工作。油性皮肤要注重清洁控油，干性皮肤则需加强保湿。</li>
+                <li><strong>家居保养</strong>：定期清理家居环境，保持室内通风良好，对家具和电器进行适当的保养。比如，每月至少对沙发、地毯进行一次深度清洁。</li>
+                <li><strong>饮食保养</strong>：多摄入富含维生素、矿物质和膳食纤维的食物，如蔬菜、水果、全谷物等。每天保证摄入足够的水分，至少 1500 - 2000 毫升。</li>
+                <li><strong>眼部保养</strong>：长时间使用电子设备时，要注意适时休息，可每隔 20 分钟眺望远方 20 秒。同时，可以使用一些具有滋润功效的眼药水。</li>
+            </ul>
+        </section>
+
+        <!-- 健康建议部分 -->
+        <section id="health">
+            <h2>健康建议</h2>
+            <img src="https://dimg04.c-ctrip.com/images/0300e12000bzsdbcy41F1.jpg" alt="健康运动图片">
+            <p>健康的生活方式是保持良好身体状态的关键。以下是一些健康建议：</p>
+            <ul>
+                <li><strong>运动锻炼</strong>：每周进行至少 150 分钟的中等强度有氧运动，如快走、慢跑、游泳等，也可结合力量训练增强肌肉。例如，每周进行 2 - 3 次的哑铃训练。</li>
+                <li><strong>心理健康</strong>：学会应对压力和负面情绪，可通过冥想、阅读、与朋友交流等方式缓解压力。每天花 15 - 20 分钟进行冥想放松。</li>
+                <li><strong>定期体检</strong>：每年进行一次全面的身体检查，及时发现和预防潜在的健康问题。特别是有家族病史的人群，更要重视体检。</li>
+                <li><strong>口腔健康</strong>：每天早晚正确刷牙，使用牙线清洁牙缝，定期看牙医进行口腔检查和清洁。每半年到一年看一次牙医。</li>
+                <li><strong>呼吸健康</strong>：多进行深呼吸练习，增强肺部功能。可以在早晨或傍晚到户外进行深呼吸，每次 10 - 15 分钟。</li>
+            </ul>
+        </section>
+
+        <!-- 相关资源部分 -->
+        <section id="resources">
+            <h2>相关资源</h2>
+            <img src="https://img95.699pic.com/xsj/0t/ik/i0.jpg%21/fh/300" alt="相关资源图片">
+            <p>以下是一些与保养和健康相关的实用资源：</p>
+            <ul>
+                <li><a href="https://www.zhihu.com/topic/19554930" target="_blank">知乎 - 健康养生话题</a>：在这里可以获取各种健康养生的知识和经验分享。</li>
+                <li><a href="https://www.douban.com/group/health/" target="_blank">豆瓣健康小组</a>：和志同道合的人一起讨论健康话题，交流心得。</li>
+                <li><a href="https://www.fitbit.com" target="_blank">Fitbit</a>：一款知名的健康追踪应用，能帮助你监测运动、睡眠等健康数据。</li>
+                <li><a href="https://www.healthline.com" target="_blank">Healthline</a>：提供丰富的健康资讯和专业的医学知识。</li>
+                <li><a href="https://www.webmd.com" target="_blank">WebMD</a>：全球知名的医疗健康网站，有大量的健康文章和专家建议。</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2025 保养与健康指南. 保留所有权利.</p>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <a href="#" class="back-to-top">↑</a>
+</body>
+
+</html>
