@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript核心语法学习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            color: #f0f0f0;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #ecf0f1;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .code-section {
+            flex: 1;
+            background: rgba(30, 30, 46, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #3498db;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .section-title i {
+            font-size: 1.8rem;
+            color: #2ecc71;
+        }
+        
+        .code-block {
+            background: #1e1e2e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            font-family: 'Consolas', monospace;
+            font-size: 1.1rem;
+            overflow-x: auto;
+        }
+        
+        .code-comment {
+            color: #6a9955;
+        }
+        
+        .code-keyword {
+            color: #569cd6;
+        }
+        
+        .code-function {
+            color: #dcdcaa;
+        }
+        
+        .code-string {
+            color: #ce9178;
+        }
+        
+        .code-number {
+            color: #b5cea8;
+        }
+        
+        .code-operator {
+            color: #d4d4d4;
+        }
+        
+        .code-variable {
+            color: #9cdcfe;
+        }
+        
+        .output-section {
+            flex: 1;
+            background: rgba(30, 30, 46, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .output-content {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 300px;
+            font-family: 'Consolas', monospace;
+        }
+        
+        .output-line {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .line-number {
+            color: #6a9955;
+            min-width: 30px;
+        }
+        
+        .concepts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .concept-card {
+            background: rgba(52, 73, 94, 0.5);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .concept-card:hover {
+            background: rgba(52, 152, 219, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .concept-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+        
+        .concept-content {
+            color: #ecf0f1;
+            line-height: 1.7;
+        }
+        
+        .concept-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .concept-content li {
+            margin-bottom: 8px;
+        }
+        
+        .concept-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript核心语法学习</h1>
+            <p class="subtitle">本教程涵盖了JavaScript基础语法，包括变量声明、数据类型、运算符、流程控制、循环结构和函数定义等核心概念</p>
+        </header>
+        
+        <div class="content-wrapper">
+            <div class="code-section">
+                <h2 class="section-title"><i class="fas fa-code"></i> 代码示例</h2>
+                
+                <div class="code-block">
+                    <div><span class="code-comment">// 变量声明与类型</span></div>
+                    <div><span class="code-keyword">let</span> <span class="code-variable">score</span> = <span class="code-number">100</span>;</div>
+                    <div><span class="code-keyword">const</span> <span class="code-variable">apiKey</span> = <span class="code-string">'secure-key-12345'</span>;</div>
+                    <div><span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-variable">score</span>);</div>
+                    <div><span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-keyword">typeof</span> <span class="code-variable">score</span>, <span class="code-keyword">typeof</span> <span class="code-variable">apiKey</span>, <span class="code-keyword">typeof</span> <span class="code-keyword">true</span>);</div>
+                    <br>
+                    <div><span class="code-keyword">let</span> <span class="code-variable">strNum</span> = <span class="code-string">'1'</span>;</div>
+                    <div><span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-variable">score</span> <span class="code-operator">+</span> <span class="code-variable">strNum</span>); <span class="code-comment">// 字符串拼接</span></div>
+                    <div><span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-variable">score</span> <span class="code-operator">+</span> <span class="code-function">Number</span>(<span class="code-variable">strNum</span>)); <span class="code-comment">// 数值相加</span></div>
+                    <br>
+                    <div><span class="code-keyword">let</span> <span class="code-variable">strScore</span> = <span class="code-string">'100'</span>;</div>
+                    <div><span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-variable">score</span> <span class="code-operator">==</span> <span class="code-variable">strScore</span>); <span class="code-comment">// 宽松相等</span></div>
+                    <div><span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-variable">score</span> <span class="code-operator">===</span> <span class="code-variable">strScore</span>); <span class="code-comment">// 严格相等</span></div>
+                </div>
+                
+                <div class="code-block">
+                    <div><span class="code-comment">// 条件语句</span></div>
+                    <div><span class="code-keyword">let</span> <span class="code-variable">currentTime</span> = <span class="code-string">'12:20'</span>;</div>
+                    <div><span class="code-keyword">if</span> (<span class="code-variable">currentTime</span> <span class="code-operator">===</span> <span class="code-string">'12:20'</span>) {</div>
+                    <div>&nbsp;&nbsp;<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-string">'午餐时间到了！'</span>);</div>
+                    <div>} <span class="code-keyword">else</span> {</div>
+                    <div>&nbsp;&nbsp;<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-string">'继续学习...'</span>);</div>
+                    <div>}</div>
+                </div>
+                
+                <div class="code-block">
+                    <div><span class="code-comment">// 循环结构</span></div>
+                    <div><span class="code-keyword">for</span> (<span class="code-keyword">let</span> <span class="code-variable">i</span> = <span class="code-number">1</span>; <span class="code-variable">i</span> <span class="code-operator"><=</span> <span class="code-number">5</span>; <span class="code-variable">i</span><span class="code-operator">++</span>) {</div>
+                    <div>&nbsp;&nbsp;<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-string">'计数: '</span> <span class="code-operator">+</span> <span class="code-variable">i</span>);</div>
+                    <div>}</div>
+                    <br>
+                    <div><span class="code-keyword">let</span> <span class="code-variable">energy</span> = <span class="code-number">60</span>;</div>
+                    <div><span class="code-keyword">while</span> (<span class="code-variable">energy</span> > <span class="code-number">0</span>) {</div>
+                    <div>&nbsp;&nbsp;<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-string">'剩余能量: '</span> <span class="code-operator">+</span> <span class="code-variable">energy</span>);</div>
+                    <div>&nbsp;&nbsp;<span class="code-variable">energy</span> <span class="code-operator">-=</span> <span class="code-number">15</span>;</div>
+                    <div>}</div>
+                </div>
+                
+                <div class="code-block">
+                    <div><span class="code-comment">// 函数定义与使用</span></div>
+                    <div><span class="code-keyword">function</span> <span class="code-function">greet</span>() {</div>
+                    <div>&nbsp;&nbsp;<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-string">'你好，欢迎学习JavaScript！'</span>);</div>
+                    <div>}</div>
+                    <div><span class="code-function">greet</span>();</div>
+                    <br>
+                    <div><span class="code-keyword">function</span> <span class="code-function">showMessage</span>(<span class="code-variable">content</span>) {</div>
+                    <div>&nbsp;&nbsp;<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-string">'消息内容: '</span> <span class="code-operator">+</span> <span class="code-function">String</span>(<span class="code-variable">content</span>));</div>
+                    <div>}</div>
+                    <div><span class="code-function">showMessage</span>(<span class="code-string">'这是传入的参数'</span>);</div>
+                    <br>
+                    <div><span class="code-keyword">function</span> <span class="code-function">createMessage</span>(<span class="code-variable">prefix</span>, <span class="code-variable">suffix</span>) {</div>
+                    <div>&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-variable">prefix</span> <span class="code-operator">+</span> <span class="code-string">' 核心语法 '</span> <span class="code-operator">+</span> <span class="code-variable">suffix</span>;</div>
+                    <div>}</div>
+                    <div><span class="code-keyword">let</span> <span class="code-variable">message</span> = <span class="code-function">createMessage</span>(<span class="code-string">'JavaScript'</span>, <span class="code-string">'学习'</span>);</div>
+                    <div><span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-variable">message</span>);</div>
+                </div>
+            </div>
+            
+            <div class="output-section">
+                <h2 class="section-title"><i class="fas fa-terminal"></i> 执行结果</h2>
+                <div class="output-content" id="consoleOutput">
+                    <div class="output-line"><span class="line-number">1:</span> 100</div>
+                    <div class="output-line"><span class="line-number">2:</span> number string boolean</div>
+                    <div class="output-line"><span class="line-number">3:</span> 1001</div>
+                    <div class="output-line"><span class="line-number">4:</span> 101</div>
+                    <div class="output-line"><span class="line-number">5:</span> true</div>
+                    <div class="output-line"><span class="line-number">6:</span> false</div>
+                    <div class="output-line"><span class="line-number">7:</span> 午餐时间到了！</div>
+                    <div class="output-line"><span class="line-number">8:</span> 计数: 1</div>
+                    <div class="output-line"><span class="line-number">9:</span> 计数: 2</div>
+                    <div class="output-line"><span class="line-number">10:</span> 计数: 3</div>
+                    <div class="output-line"><span class="line-number">11:</span> 计数: 4</div>
+                    <div class="output-line"><span class="line-number">12:</span> 计数: 5</div>
+                    <div class="output-line"><span class="line-number">13:</span> 剩余能量: 60</div>
+                    <div class="output-line"><span class="line-number">14:</span> 剩余能量: 45</div>
+                    <div class="output-line"><span class="line-number">15:</span> 剩余能量: 30</div>
+                    <div class="output-line"><span class="line-number">16:</span> 剩余能量: 15</div>
+                    <div class="output-line"><span class="line-number">17:</span> 你好，欢迎学习JavaScript！</div>
+                    <div class="output-line"><span class="line-number">18:</span> 消息内容: 这是传入的参数</div>
+                    <div class="output-line"><span class="line-number">19:</span> JavaScript 核心语法 学习</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="concepts-container">
+            <div class="concept-card">
+                <h3 class="concept-title">变量与数据类型</h3>
+                <div class="concept-content">
+                    <p>JavaScript 使用 <code>let</code> 和 <code>const</code> 声明变量：</p>
+                    <ul>
+                        <li><code>let</code> - 声明可重新赋值的变量</li>
+                        <li><code>const</code> - 声明常量，不可重新赋值</li>
+                        <li>基本数据类型: number, string, boolean, null, undefined</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h3 class="concept-title">运算符与类型转换</h3>
+                <div class="concept-content">
+                    <p>JavaScript 支持多种运算符：</p>
+                    <ul>
+                        <li>算术运算符: +, -, *, /</li>
+                        <li>比较运算符: ==, ===, !=, !==</li>
+                        <li>逻辑运算符: &&, ||, !</li>
+                        <li>类型转换: String(), Number(), Boolean()</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h3 class="concept-title">流程控制</h3>
+                <div class="concept-content">
+                    <p>条件语句用于控制程序流程：</p>
+                    <ul>
+                        <li><code>if...else</code> - 基本条件判断</li>
+                        <li><code>switch</code> - 多分支选择</li>
+                        <li><code>三元运算符</code> - 简洁的条件表达式</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h3 class="concept-title">循环结构</h3>
+                <div class="concept-content">
+                    <p>循环用于重复执行代码块：</p>
+                    <ul>
+                        <li><code>for</code> - 指定次数的循环</li>
+                        <li><code>while</code> - 条件为真时循环</li>
+                        <li><code>do...while</code> - 至少执行一次的循环</li>
+                        <li><code>break</code> 和 <code>continue</code> - 控制循环流程</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h3 class="concept-title">函数</h3>
+                <div class="concept-content">
+                    <p>函数是可重用的代码块：</p>
+                    <ul>
+                        <li>使用 <code>function</code> 关键字定义</li>
+                        <li>可以接受参数</li>
+                        <li>使用 <code>return</code> 返回值</li>
+                        <li>函数不调用不会执行</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h3 class="concept-title">作用域与闭包</h3>
+                <div class="concept-content">
+                    <p>理解变量作用域：</p>
+                    <ul>
+                        <li>全局作用域 - 整个程序可访问</li>
+                        <li>函数作用域 - 函数内部可访问</li>
+                        <li>块级作用域 - {} 内部可访问 (ES6)</li>
+                        <li>闭包 - 函数访问其词法作用域外变量的能力</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>JavaScript核心语法学习 | 实践是学习编程的最佳途径</p>
+            <p>本页面展示了变量、数据类型、运算符、流程控制、循环和函数等核心概念</p>
+        </div>
+    </div>
+    
+    <script>
+        // 变量声明与类型
+        let score = 100;
+        const apiKey = 'secure-key-12345';
+        console.log(score);
+        console.log(typeof score, typeof apiKey, typeof true);
+        
+        let strNum = '1';
+        console.log(score + strNum); // 字符串拼接
+        console.log(score + Number(strNum)); // 数值相加
+        
+        let strScore = '100';
+        console.log(score == strScore); // 宽松相等
+        console.log(score === strScore); // 严格相等
+        
+        // 条件语句
+        let currentTime = '12:20';
+        if (currentTime === '12:20') {
+            console.log('午餐时间到了！');
+        } else {
+            console.log('继续学习...');
+        }
+        
+        // 循环结构
+        for (let i = 1; i <= 5; i++) {
+            console.log('计数: ' + i);
+        }
+        
+        let energy = 60;
+        while (energy > 0) {
+            console.log('剩余能量: ' + energy);
+            energy -= 15;
+        }
+        
+        // 函数定义与使用
+        function greet() {
+            console.log('你好，欢迎学习JavaScript！');
+        }
+        greet();
+        
+        function showMessage(content) {
+            console.log('消息内容: ' + String(content));
+        }
+        showMessage('这是传入的参数');
+        
+        function createMessage(prefix, suffix) {
+            return prefix + ' 核心语法 ' + suffix;
+        }
+        let message = createMessage('JavaScript', '学习');
+        console.log(message);
+    </script>
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
