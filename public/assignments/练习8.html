@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 语法练习 - 高级版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleGlow 2s infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 5px rgba(255, 94, 98, 0.7); }
+            to { text-shadow: 0 0 20px rgba(255, 153, 102, 0.9), 0 0 30px rgba(255, 94, 98, 0.8); }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ddd;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+        }
+        
+        .card h2 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 0.95rem;
+        }
+        
+        .console {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 200px;
+            font-family: 'Courier New', monospace;
+            margin-top: 20px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+        
+        .console-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #ff9966;
+            font-weight: bold;
+        }
+        
+        .console-line {
+            margin: 8px 0;
+            padding-left: 10px;
+            border-left: 2px solid #ff5e62;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .demo-area {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .demo-title {
+            text-align: center;
+            color: #1a2a6c;
+            margin-bottom: 20px;
+        }
+        
+        .elements-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .element-box {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            min-width: 200px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .element-box:hover {
+            transform: scale(1.05);
+            border-color: #ff9966;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .element-box h3 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            animation: highlight 1.5s ease;
+        }
+        
+        @keyframes highlight {
+            0% { background-color: rgba(255, 255, 0, 0.5); }
+            100% { background-color: transparent; }
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript 语法练习</h1>
+            <p class="subtitle">探索JavaScript核心概念：类与对象、继承、回调函数和DOM操作</p>
+        </header>
+        
+        <div class="content">
+            <div class="card">
+                <h2>类与对象</h2>
+                <p>JavaScript使用类(Class)作为对象的蓝图，通过构造函数创建对象实例。</p>
+                
+                <div class="code-block">
+                    class Student {<br>
+                    &nbsp;&nbsp;constructor(name, age, school, grade) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.age = age;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.school = school;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.grade = grade;<br>
+                    &nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;learn(subject = "语文") {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log(`${this.name}正在学习${subject}，真棒！`);<br>
+                    &nbsp;&nbsp;}<br>
+                    }<br>
+                    <br>
+                    // 创建对象实例<br>
+                    const pupil = new Student("小明", 7, "实验小学", 1);<br>
+                    pupil.learn("英语");
+                </div>
+                
+                <button class="btn" id="createPupil">创建小学生对象</button>
+                <button class="btn" id="callLearn">调用learn方法</button>
+            </div>
+            
+            <div class="card">
+                <h2>继承</h2>
+                <p>使用extends关键字创建子类，继承父类的属性和方法。</p>
+                
+                <div class="code-block">
+                    class Undergraduate extends Student {<br>
+                    &nbsp;&nbsp;constructor(name, age, school, grade, major) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;super(name, age, school, grade);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;this.major = major;<br>
+                    &nbsp;&nbsp;}<br>
+                    <br>
+                    &nbsp;&nbsp;intern(corp) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log(`${this.name}在${corp}实习`);<br>
+                    &nbsp;&nbsp;}<br>
+                    }<br>
+                    <br>
+                    // 创建子类实例<br>
+                    const undergraduate = new Undergraduate("小李", 20, "科技大学", 3, "计算机科学");<br>
+                    undergraduate.intern("谷歌");
+                </div>
+                
+                <button class="btn" id="createUndergraduate">创建大学生对象</button>
+                <button class="btn" id="callIntern">调用intern方法</button>
+            </div>
+            
+            <div class="card">
+                <h2>回调函数</h2>
+                <p>回调函数是在另一个函数执行完成后执行的函数，常用于异步操作。</p>
+                
+                <div class="code-block">
+                    console.log("第一行代码执行");<br>
+                    <br>
+                    // 使用setTimeout模拟异步操作<br>
+                    setTimeout(function() {<br>
+                    &nbsp;&nbsp;console.log("回调函数执行 (2秒后)");<br>
+                    }, 2000);<br>
+                    <br>
+                    console.log("最后一行代码执行");
+                </div>
+                
+                <button class="btn" id="runCallbackDemo">执行回调演示</button>
+            </div>
+        </div>
+        
+        <div class="console">
+            <div class="console-title">
+                <span>控制台输出</span>
+                <button class="btn" id="clearConsole" style="padding: 5px 15px; font-size: 0.9rem;">清空控制台</button>
+            </div>
+            <div id="consoleOutput"></div>
+        </div>
+        
+        <div class="demo-area">
+            <h2 class="demo-title">DOM 操作演示</h2>
+            <p style="text-align: center; margin-bottom: 20px;">点击下方元素或按钮查看DOM操作效果</p>
+            
+            <div class="elements-container">
+                <div class="element-box" id="demoElement">
+                    <h3>标题元素</h3>
+                    <p id="demoText">这是一个标题的原始内容</p>
+                </div>
+                
+                <div class="element-box" id="anotherElement">
+                    <h3>段落元素</h3>
+                    <p id="anotherText">这是一个段落</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn" id="changeContent">改变标题内容</button>
+                <button class="btn" id="changeStyle">改变标题样式</button>
+                <button class="btn" id="resetAll">重置所有</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>JavaScript 语法练习 | 使用现代JavaScript技术构建</p>
+            <p>通过实践掌握类与对象、继承、回调函数和DOM操作</p>
+        </footer>
+    </div>
+
+    <script>
+        // 控制台输出函数
+        function logToConsole(message, color = "#d4d4d4") {
+            const consoleOutput = document.getElementById('consoleOutput');
+            const line = document.createElement('div');
+            line.className = 'console-line';
+            line.textContent = message;
+            line.style.color = color;
+            consoleOutput.appendChild(line);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            
+            // 添加高亮效果
+            line.classList.add('highlight');
+            setTimeout(() => line.classList.remove('highlight'), 1500);
+            
+            // 同时在浏览器控制台输出
+            console.log(message);
+        }
+
+        // 清空控制台
+        document.getElementById('clearConsole').addEventListener('click', function() {
+            document.getElementById('consoleOutput').innerHTML = '';
+        });
+
+        // 类和对象演示
+        class Student {
+            constructor(name, age, school, grade) {
+                this.name = name;
+                this.age = age;
+                this.school = school;
+                this.grade = grade;
+            }
+            
+            learn(subject = "语文") {
+                logToConsole(`${this.name}正在学习${subject}，真棒！`, "#4EC9B0");
+            }
+            
+            exam() {
+                logToConsole(`${this.name}正在考试`, "#4EC9B0");
+            }
+        }
+
+        class Undergraduate extends Student {
+            constructor(name, age, school, grade, major) {
+                super(name, age, school, grade);
+                this.major = major;
+            }
+
+            intern(corp) {
+                logToConsole(`${this.name}在${corp}实习，获得经验值1000`, "#C586C0");
+                super.exam();
+            }
+        }
+
+        // 创建对象实例
+        let pupil;
+        document.getElementById('createPupil').addEventListener('click', function() {
+            pupil = new Student("小明", 7, "实验小学", 1);
+            logToConsole(`创建小学生对象: ${pupil.name}, ${pupil.age}岁, ${pupil.school}${pupil.grade}年级`, "#9CDCFE");
+        });
+
+        document.getElementById('callLearn').addEventListener('click', function() {
+            if (pupil) {
+                pupil.learn("英语");
+            } else {
+                logToConsole("请先创建小学生对象", "#F44747");
+            }
+        });
+
+        let undergraduate;
+        document.getElementById('createUndergraduate').addEventListener('click', function() {
+            undergraduate = new Undergraduate("小李", 20, "科技大学", 3, "计算机科学");
+            logToConsole(`创建大学生对象: ${undergraduate.name}, ${undergraduate.major}专业`, "#9CDCFE");
+        });
+
+        document.getElementById('callIntern').addEventListener('click', function() {
+            if (undergraduate) {
+                undergraduate.intern("谷歌");
+            } else {
+                logToConsole("请先创建大学生对象", "#F44747");
+            }
+        });
+
+        // 回调函数演示
+        document.getElementById('runCallbackDemo').addEventListener('click', function() {
+            logToConsole("第一行代码执行", "#DCDCAA");
+            
+            setTimeout(function() {
+                logToConsole("回调函数执行 (2秒后)", "#DCDCAA");
+            }, 2000);
+            
+            logToConsole("最后一行代码执行", "#DCDCAA");
+        });
+
+        // DOM操作演示
+        const demoElement = document.getElementById('demoElement');
+        const demoText = document.getElementById('demoText');
+        const anotherElement = document.getElementById('anotherElement');
+        const anotherText = document.getElementById('anotherText');
+        const originalDemoText = demoText.textContent;
+        const originalAnotherText = anotherText.textContent;
+
+        // 改变内容
+        document.getElementById('changeContent').addEventListener('click', function() {
+            demoText.textContent = "这是来自脚本的动态内容";
+            demoText.style.color = "#FF6B6B";
+            demoElement.classList.add('highlight');
+            setTimeout(() => demoElement.classList.remove('highlight'), 1500);
+            logToConsole("标题内容已改变", "#D7BA7D");
+        });
+
+        // 改变样式
+        document.getElementById('changeStyle').addEventListener('click', function() {
+            demoText.style.color = "#4EC9B0";
+            demoText.style.fontWeight = "bold";
+            demoText.style.fontSize = "1.2em";
+            demoElement.classList.add('highlight');
+            setTimeout(() => demoElement.classList.remove('highlight'), 1500);
+            logToConsole("标题样式已改变", "#D7BA7D");
+        });
+
+        // 重置所有
+        document.getElementById('resetAll').addEventListener('click', function() {
+            demoText.textContent = originalDemoText;
+            anotherText.textContent = originalAnotherText;
+            demoText.style = "";
+            anotherText.style = "";
+            demoElement.classList.add('highlight');
+            anotherElement.classList.add('highlight');
+            setTimeout(() => {
+                demoElement.classList.remove('highlight');
+                anotherElement.classList.remove('highlight');
+            }, 1500);
+            logToConsole("所有元素已重置", "#D7BA7D");
+        });
+
+        // 元素点击事件
+        demoElement.addEventListener('click', function() {
+            logToConsole("标题元素被点击了", "#D7BA7D");
+            this.classList.add('highlight');
+            setTimeout(() => this.classList.remove('highlight'), 1500);
+        });
+
+        anotherElement.addEventListener('click', function() {
+            logToConsole("段落元素被点击了", "#D7BA7D");
+            this.classList.add('highlight');
+            setTimeout(() => this.classList.remove('highlight'), 1500);
+        });
+
+        // 页面加载完成事件
+        window.onload = function() {
+            logToConsole("页面加载完成！", "#6A9955");
+        };
+
+        // 初始控制台消息
+        setTimeout(() => {
+            logToConsole("欢迎来到JavaScript语法练习！", "#6A9955");
+            logToConsole("请尝试点击页面上的各种按钮来探索JavaScript功能", "#6A9955");
+        }, 1000);
+    </script>
+</body>
+</html>
