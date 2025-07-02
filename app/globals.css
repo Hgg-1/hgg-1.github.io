@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+}
+
+body {
+  color: #3a2d4b;
+  font-family: 'KaiTi', 'STKaiti', 'Serif';
+  min-height: 100vh;
+}
+
+/* Remove old styles if they exist */
+@layer base {
+  .bg-image, #__next .bg-image {
+    display: none;
+  }
+}
