@@ -22,20 +22,8 @@
 
 ### 2. 作品展示 (`/portfolio`)
 
-<div className="grid grid-cols-2 gap-4">
-  <img src="/images/portfolio/1.png" alt="智能家居控制界面" />
-  <img src="/images/portfolio/2.png" alt="电商后台管理系统" />
-  <img src="/images/portfolio/3.png" alt="移动端健康应用" />
-  <img src="/images/portfolio/4.png" alt="数据可视化大屏" />
-  <img src="/images/portfolio/5.png" alt="社交平台UI设计" />
-  <img src="/images/portfolio/6.png" alt="在线教育平台" />
-  <img src="/images/portfolio/7.png" alt="物联网设备管理" />
-</div>
-
-▲ 精选作品截图（点击查看大图）
-
-![作品集截图](/images/portfolio-screenshot.png)
-<center>▲ 作品集卡片式布局展示</center>
+![智能家居控制界面](/images/portfolio/1.png)
+<center>▲ 智能家居控制界面截图</center>
 
 - **集中展示**: 以卡片网格的形式，展示了所有的项目和练习。
 - **分类筛选**: 可以根据"作业"、"练习"、"其他"等分类快速筛选作品。
