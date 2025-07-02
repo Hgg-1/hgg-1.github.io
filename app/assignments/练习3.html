@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 核心概念：背景、盒模型、布局、动画</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            background: linear-gradient(120deg, #1a2980, #26d0ce);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+        
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #1a2980;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #1a2980, #26d0ce);
+        }
+        
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #3498db;
+            padding: 20px;
+            margin-bottom: 2em;
+            border-radius: 20px;
+            background: #e3f2fd;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            color: #1a2980;
+            transition: all 0.3s ease;
+        }
+        
+        .box:hover {
+            transform: rotate(5deg);
+            background: #bbdefb;
+        }
+        
+        .display-demo p {
+            display: inline-block;
+            background: #e3f2fd;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #bbdefb;
+        }
+        
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .flex-container p {
+            border: 1px solid #3498db;
+            background: #e3f2fd;
+            margin-right: 0;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .flex-container p:hover {
+            background: #bbdefb;
+            transform: scale(1.05);
+        }
+        
+        .animate-box {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #3498db, #1a2980);
+            text-align: center;
+            line-height: 120px;
+            margin: 30px auto;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .animate-box:hover {
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            transform: rotate(360deg) scale(1.2);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+        }
+        
+        .phonetic {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+        }
+        
+        .highlight {
+            background: rgba(52, 152, 219, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS 核心概念：背景、盒模型、布局、动画</h1>
+    
+    <section>
+        <h2>背景</h2>
+        <div>
+            <div class="phonetic">
+                <p>"cascading" 的音标是 /kæˈskeɪdɪŋ/</p>
+                <p>linear：英 [ˈlɪniə(r)] 美 [ˈlɪniər]</p>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>盒模型</h2>
+        <div>
+            <div class="box">box 中的内容 1</div>
+            <div class="box">box 中的内容 2</div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>布局</h2>
+        <div>
+            <h3>display 的不同取值</h3>
+            <div class="display-demo">
+                <p>段1</p>
+                <p>段2</p>
+                <p>段3</p>
+                <p style="display: none">段4 (display: none)</p>
+            </div>
+            
+            <h3 style="margin-top: 30px;">Flex 布局示例</h3>
+            <div class="flex-container">
+                <p>111111111111111111111</p>
+                <p>222222222222222</p>
+                <p>3</p>
+                <p>4</p>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>动画</h2>
+        <p>动画必须要有<span class="highlight">起始状态</span>、<span class="highlight">结束状态</span>、<span class="highlight">时长</span></p>
+        <div class="animate-box">悬停查看效果</div>
+        <p style="text-align: center; margin-top: 20px;">↑ 鼠标悬停在上面的盒子上查看动画效果 ↑</p>
+    </section>
+    
+    <footer>
+        <p>CSS核心概念演示页面 &copy; 2023</p>
+    </footer>
+</body>
+</html>
